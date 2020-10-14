@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', 'Calibri', Verdana;
+  font-size: 12px;
+  color: #000;
+}
+
+.schedule {
+  width: 500px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/* ----------------------------------- РАСПИСАНИЕ ----------------------------------- */
+
+.schedule__list {
+  width: 300px;
+  border: 2px solid #000;
+  margin: 20px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.schedule__star {
+  height: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 94%;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.schedule__rows {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+  position: relative;
+  cursor: pointer;
+}
+
+.schedule__rows:hover {
+  color: orange;
+}
+
+.schedule__rows:last-child {
+  margin-bottom: 10px;
+}
+
+.schedule__time,
+.schedule__todo,
+.schedule__input_time,
+.schedule__input_todo {
+  width: 100px;
+  text-align: center;
+}
+
+.schedule__cross {
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.schedule__cross::after {
+  content: 'X';
+  position: absolute;
+  top: -1px;
+  right: -35px;
+}
+
+.schedule__input_time,
+.schedule__input_todo {
+  border: .5px solid #000;
+  padding: 3px;
+  text-align: center;
+}
+
+.schedule__input_time {
+  padding-left: 10%;
+  outline: none;
+  font-family: 'Lato', 'Calibri', Verdana, Tahoma;
+  font-size: 12px;
+  color: #000;
+}
+
+.schedule__input_time:active,
+.schedule__input_todo:active,
+.schedule__input_time:focus,
+.schedule__input_todo:focus {
+  border: 1px solid orange;
+}
+
+.schedule__add {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto;
+  position: relative;
+}
+
+.schedule__add-btn {
+  border: none;
+}
+
+.schedule__add-btn::after {
+  content: '+';
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  top: 0px;
+  right: -38px;
+  cursor: pointer;
+}
+
+.new__rows {
+  animation: flowing 400ms;
+}
+
+@keyframes flowing {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* ----------------------------------- ДНИ НЕДЕЛИ ----------------------------------- */
+
+.schedule__days {
+  width: 100px;
+  height: 150px;
+  margin: 20px auto;
+  padding: 1.5px;
+}
+
+/* элемент списка */
+.schedule__days_item {
+  border: 1px solid #fff;
+  list-style-type: none;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 3px;
+  padding-bottom: 1px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.schedule__days_item:last-child {
+  margin-bottom: 0;
+}
+
+.schedule__days_item:hover {
+  color: orange;
+}
+
+.active {
+  border: 1px solid #000;
+}
