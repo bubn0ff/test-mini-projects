@@ -1,4 +1,4 @@
-const data = [
+let data = [
   { 
     day: 'пн',
     work: [
@@ -68,6 +68,10 @@ const scheduleDays = document.querySelector('.schedule__days');
 const scheduleInputTime = document.querySelector('.schedule__input_time');
 const scheduleInputTodo = document.querySelector('.schedule__input_todo');
 
+// если есть в локальном хранилище данные - парсим их в переменную data
+if (localStorage.getItem('data')) {
+  data = JSON.parse(localStorage.getItem('data'));
+}
 
 // Функция вывода дней недели в правый блок с подгрузкой данных в левый блок
 const setDays = () => {
@@ -197,6 +201,9 @@ class App {
 
       // переводим фокус в первый input
       scheduleInputTime.focus();
+
+      // добавляем все данные из data в локальное хранилище
+      setLocalStorage(data);
     } else {
       null;
     }
@@ -253,9 +260,11 @@ const deleteRowsInData = (el) => {
     selectedTodo.splice(indexFilteredDataTodo, 1);
   }
 
+  // добавляем все данные из data в локальное хранилище
+  setLocalStorage(data);
+
   // console.log('массив данных в переменной data выбранного дня:', selectedTodo);
 }
-
 
 // Функция добавления дел в data
 const addRowsInData = (el) => {  
@@ -270,11 +279,17 @@ const addRowsInData = (el) => {
   selectedTodo.push(el);
 }
 
-
 // Функции сортировки по возрастанию (по конкретному полю)
 const sortByField = field => {
   return (a, b) => a[field] > b[field] ? 1 : -1;
 }
+
+// Функция добавления всех данных из data в локальное хранилище
+const setLocalStorage = (data) => {
+  localStorage.setItem('data', JSON.stringify(data));
+}
+
+
 
 // Добавляем данные формы в расписание
 scheduleList.addEventListener('submit', (e) => {
