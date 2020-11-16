@@ -1,0 +1,1089 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+// ================================ Блок переменных ================================ 
+$font-mobile: 12px;
+$font-min: 18px;
+$font-middle: 24px;
+$font-max: 48px;
+$color-white: #fff;
+$back-color:  #6EBBD3;
+$back-color-dark: #1F2021;
+$font-bold: 700;
+$cards-pseudo-top: 35px;
+
+
+
+// ================================ Общие стили ================================ 
+
+body {
+  font-family: "Montserrat", Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+h2 {
+  font-weight: $font-bold;
+  line-height: 29px;
+  font-size: $font-middle;
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 14px;
+  }
+}
+
+.btn {
+  border-radius: 10px;
+  line-height: 17px;
+  font-size: 14px;
+
+  @media (max-width: 340px) {
+    border-radius: 5px;
+  }
+}
+
+
+// ================================ Блок шаблонов ================================ 
+%margin {
+  margin: 0 auto;
+}
+
+%flex-cards-feat {
+  flex: 0 1 30%;
+}
+
+
+// ================================ Контейнеры ================================ 
+.container {
+  max-width: 1280px;
+  @extend %margin;
+}
+
+.wrap {
+  max-width: 1180px;
+  @extend %margin;
+
+  @media (max-width: 1200px) {
+    max-width: 850px;
+  }
+
+  @media (max-width: 900px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 630px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+  }
+
+  @media (max-width: 340px) {
+    max-width: 250px;
+  }
+
+  @media (max-width: 280px) {
+    max-width: 200px;
+  }
+}
+
+
+
+// ================================ Блок Header ================================ 
+
+.header {
+  color: $color-white;
+  background: url('/img/header.png') no-repeat top center;
+  background-size: cover;
+  position: relative;
+
+  .wrap {
+    position: relative;
+    z-index: 3;
+  }
+
+  // .header__top
+  &__top {
+    padding-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+
+    // -------------- Меню --------------
+    .menu {
+      font-size: $font-min;
+      flex: 0 1 45%;
+      margin-left: 120px;
+      position: relative;
+      
+      @media (max-width: 900px) {
+        margin-left: auto;
+      } 
+
+      // ------- Бургер-меню -------
+      #menu__toggle {
+        opacity: 0;
+      }
+      
+      #menu__toggle:checked ~ .menu__btn > span {
+        transform: rotate(45deg);
+      }
+      
+      #menu__toggle:checked ~ .menu__btn > span::before {
+        top: 0;
+        transform: rotate(0);
+      }
+      
+      #menu__toggle:checked ~ .menu__btn > span::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+      
+      #menu__toggle:checked ~ .menu__list {
+        right: 0;
+      }
+
+      // menu__btn
+      &__btn {
+        display: none;
+        align-items: center;
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        z-index: 1;
+
+        @media (max-width: 900px) {
+          display: flex;
+        }
+      }
+
+      &__btn > span,
+      &__btn > span::before,
+      &__btn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #fff;
+        transition-duration: .25s;
+      }
+
+      &__btn > span::before {
+        content: '';
+        top: -8px;
+      }
+
+      &__btn > span::after {
+        content: '';
+        top: 8px;
+      }
+      
+      // .menu__list
+      &__list {
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: 900px) {
+          flex-direction: column;
+          justify-content: start;
+          text-align: center;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100%;
+          margin: 0 auto;
+          padding: 80px 0;
+          background-color: $back-color-dark;
+          box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+          transition-duration: .25s;
+        }
+      }
+
+      &__link {
+        @media (max-width: 900px) {
+          display: block;
+          padding: 24px;
+          color: #fff;
+          font-size: 20px;
+          font-weight: 600;
+          text-decoration: none;
+          transition-duration: .25s;
+        }
+
+        &:hover {
+          color: #000;
+          background-color: #CFD8DC;
+        }
+      }
+    }
+
+    // -------------- Телефон --------------
+    .phone {
+      margin-left: auto;
+      text-align: right;
+      padding-top: 10px;
+
+      @media (max-width: 900px) {
+        margin-left: 0;
+      }
+
+      @media (max-width: 767px) {
+        position: absolute;
+        top: 70%;
+        left: 0;
+        z-index: -1;
+      }
+
+      // .phone__number
+      &__number {
+        font-weight: $font-bold;
+        font-size: $font-middle;
+        line-height: 29px;
+        margin-bottom: 3px;
+        
+        @media (max-width: 767px) {
+          font-size: $font-min;
+          line-height: 16px;
+        }
+
+        @media (max-width: 340px) {
+          font-size: 16px;
+        }
+      }
+      
+      // .phone__title
+      &__title {
+        font-size: $font-min;
+        line-height: 22px;
+
+        @media (max-width: 767px) {
+          font-size: $font-mobile;
+        }
+      }
+    }
+
+    // for header
+    @media (max-width: 767px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  // .header__bottom
+  &__bottom {
+    font-weight: $font-bold;
+    font-size: 38px;
+    line-height: 46px;
+    padding-bottom: 66px;
+
+    @media (max-width: 767px) {
+      font-size: $font-middle;
+      line-height: 23px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 20px;
+    }
+
+    @media (max-width: 280px) {
+      font-size: $font-min;
+      line-height: 14px;
+    }
+  }
+
+  // полупрозрачный фон для картинки в header
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: url('/img/header_background.png') no-repeat top center;
+    background-size: cover;
+    z-index: 1;
+  }
+}
+
+
+
+// ================================ Блок Main ================================ 
+
+.section__main {
+  margin-bottom: 83px;
+}
+
+// --------------------- < Карточки > ---------------------
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 38px;
+
+  // .cards__show
+  &__show {
+    display: flex;
+    justify-content: center;
+
+    // .cards__show_more
+    &_more {
+      text-align: center;
+      border: 1px solid #cacaca;
+      padding: 24px 129px;
+      cursor: pointer;
+
+      @media (max-width: 480px) {
+        padding: 20px 50px;
+      }
+
+      @media (max-width: 340px) {
+        padding: 14px 20px;
+        font-size: $font-mobile;
+      }
+
+      &:hover {
+        color: $back-color;
+      }
+
+      &:active {
+        color: orangered;
+      }
+  
+      &:visited {
+        color: darkorange;
+      }
+    }
+  }
+
+  // .cards__item
+  &__item {
+    min-width: 380px;
+    margin-bottom: 30px;
+
+    @media (max-width: 900px) {
+      margin: 0 auto 30px;
+    }
+
+    @media (max-width: 480px) {
+      min-width: 200px;
+    }
+
+    @media (min-width: 342px) {
+      min-width: 300px;
+    }
+  }
+
+  // .cards__content
+  &__content {
+    position: relative;
+  }
+
+  // .cards__img
+  &__img {
+    margin-bottom: 29px;
+    position: relative;
+
+    // .cards__img_discount
+    &_discount {
+      position: relative;
+
+      &:before {
+        content: '-40%';
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        line-height: 19.5px;
+        color: $color-white;
+        background-color: #E52D2D;
+        border-radius: 10px;
+        position: absolute;
+        width: 78px;
+        height: 39px;
+        top: $cards-pseudo-top;
+        left: $cards-pseudo-top;
+        
+        @media (max-width: 480px) {
+          width: 68px;
+          height: 29px;
+          top: 20px;
+          left: 20px;
+          font-size: $font-mobile;
+          line-height: 10px;
+        }
+  
+        @media (max-width: 340px) {
+          width: 48px;
+          height: 19px;
+          line-height: 0px;
+        }
+      }
+    }
+
+    // .cards__img_selected
+    &_selected {
+
+      &:after {
+        content: url('/img/heart.svg');
+        position: absolute;
+        width: 46px;
+        height: 42px;
+        top: $cards-pseudo-top;
+        right: $cards-pseudo-top;
+        cursor: pointer;
+  
+        @media (max-width: 480px) {
+          content: url('/img/heart-min.svg');
+          width: 36px;
+          height: 32px;
+          top: 20px;
+          right: 20px;
+        }
+  
+        @media (max-width: 340px) {
+          content: url('/img/heart-micro.svg');
+          width: 26px;
+          height: 22px;
+        }
+      }
+    }
+
+    // .cards__img_unselected
+    &_unselected {
+      &:after {
+        content: url('/img/heart-white.svg');
+        position: absolute;
+        width: 46px;
+        height: 42px;
+        top: $cards-pseudo-top;
+        right: $cards-pseudo-top;;
+        cursor: pointer;
+  
+        @media (max-width: 480px) {
+          content: url('/img/heart-white-min.svg');
+          width: 36px;
+          height: 32px;
+          top: 20px;
+          right: 20px;
+        }
+  
+        @media (max-width: 340px) {
+          content: url('/img/heart-white-micro.svg');
+          width: 26px;
+          height: 22px;
+        }
+      }
+    }
+  }
+
+  // .cards__info
+  &__info {
+    margin: 0 29px;
+    @extend %margin;
+
+    @media (max-width: 480px) {
+      margin: 0 15px;
+    }
+
+    @media (max-width: 340px) {
+      margin: 0 5px;
+    }
+  }
+
+  // .cards__title
+  &__title {
+    margin-bottom: 22px;
+  }
+
+  // .cards__price
+  &__price {
+    margin-bottom: 29px;
+
+    // .cards__price_value
+    // &_value {
+    // }
+  }
+
+  // .cards__buy
+  &__buy {
+    text-align: center;
+    color: $color-white;
+    padding: 22px 55px;
+    background-color: $back-color;
+    font-weight: $font-bold;
+    line-height: 19.5px;
+    border-radius: 0px 0px 10px 10px;
+    cursor: pointer;
+    font-size: 16px;
+
+    @media (max-width: 340px) {
+      padding: 14px 55px;
+    }
+
+    @media (max-width: 280px) {
+      font-size: 14px;
+      padding: 15px;
+    }
+
+    // .cards__buy_sold
+    &_sold {
+      background-color: $back-color-dark;
+    }
+  }
+
+  // .cards__btn_buy
+  &__btn_buy {
+    user-select: none;
+    
+    &:hover {
+      font-size: $font-min;
+    }
+
+    &:active {
+      color: orangered;
+    }
+
+    &:visited {
+      color: darkorange;
+    }
+  }
+}
+// --------------------- </ Карточки > ---------------------
+
+// --------------------- < Сортировка > ---------------------
+.sort {
+  display: flex;
+  padding-top: 37px;
+  font-size: $font-min;
+  margin-bottom: 38px;
+
+  @media (max-width: 630px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+
+  // .sort__title
+  &__title {
+    font-weight: $font-bold;
+  }
+
+  // .sort__price
+  &__price {
+    margin-left: 50px;
+    cursor: pointer;
+    user-select: none;
+
+    @media (max-width: 630px) {
+      margin-left: 20px;
+    }
+
+    @media (max-width: 480px) {
+      margin-left: 0px;
+      margin-top: 10px;
+    }
+
+    &:after {
+      content: url('/img/arrow_down.svg');
+      margin-left: 14px;
+      cursor: pointer;
+
+      @media (max-width: 630px) {
+        content: url('/img/arrow_down_min.svg');
+      }
+
+      @media (max-width: 480px) {
+        content: url('/img/arrow_down_micro.svg');
+        margin-left: 3px;
+      }
+    }
+  }
+
+  // .sort__age
+  &__age {
+    margin-left: 60px;
+    cursor: pointer;
+    user-select: none;
+
+    @media (max-width: 630px) {
+      margin-left: 30px;
+    }
+
+    @media (max-width: 480px) {
+      margin-left: 0px;
+      margin-top: 10px;
+    }
+
+    &:after {
+      content: url('/img/arrow_down.svg');
+      margin-left: 14px;
+      cursor: pointer;
+
+      @media (max-width: 630px) {
+        content: url('/img/arrow_down_min.svg');
+      }
+
+      @media (max-width: 480px) {
+        content: url('/img/arrow_down_micro.svg');
+        margin-left: 3px;
+      }
+    }
+  }
+}
+// --------------------- </ Сортировка > ---------------------
+
+// --------------------- < Характеристика кота > ---------------------
+.feat {
+  margin-bottom: 22px;
+  font-size: $font-mobile;
+  line-height: 15px;
+  display: flex;
+
+  @media (max-width: 280px) {
+    flex-direction: column;
+  }
+
+  // .feat__main
+  &__main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @extend %flex-cards-feat;
+    border-left: 4px solid $back-color;
+    padding: 0 18px;
+
+    @media (max-width: 340px) {
+      padding: 0 10px 0 5px;
+    }
+
+    @media (max-width: 280px) {
+      padding: 0 10px 0 10px;
+    }
+  }
+
+  // .feat__color
+  // &__color {
+  // }
+
+  // .feat__type-color
+  // &__type-color {
+  // }
+
+  // .feat__years
+  &__years {
+    display: flex;
+    flex-direction: column;
+    @extend %flex-cards-feat;
+
+    @media (max-width: 280px) {
+      margin-top: 10px;
+      padding: 0 10px 0 14px;
+    }
+  }
+
+  // .feat__age
+  &__age {
+    font-weight: $font-bold;
+    font-size: 16px;
+    line-height: 20px;
+
+    @media (max-width: 340px) {
+      font-size: 14px;
+    }
+  }
+
+  // .feat__type-age
+  // &__type-age {
+  // }
+
+  // .feat__feet
+  &__feet {
+    display: flex;
+    flex-direction: column;
+    @extend %flex-cards-feat;
+
+    @media (max-width: 280px) {
+      margin-top: 10px;
+      padding: 0 10px 0 14px;
+    }
+  }
+
+  // .feat__number
+  &__number {
+    font-weight: $font-bold;
+    font-size: 16px;
+    line-height: 20px;
+
+    @media (max-width: 340px) {
+      font-size: 14px;
+    }
+  }
+
+  // .feat__type-feet
+  // &__type-feet {
+  // }
+}
+// --------------------- </ Характеристика кота > ---------------------
+
+
+
+// ================================ Блок Footer ================================
+
+.footer {
+  position: relative;
+
+  // .footer__main
+  &__main {
+    display: flex;
+    justify-content: space-between;
+    background-color: $back-color-dark;
+    color: $color-white;
+    padding: 92px 80px;
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+      padding: 40px;
+    }
+  }
+
+  // .footer__text
+  &__text {
+    // min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 0 1 36%;
+
+    // @media (max-width: 1200px) {
+    //   flex: 0 1 50%;
+    // }
+  }
+
+  // .footer__title
+  &__title {
+    font-size: $font-max;
+    line-height: 58px;
+    font-weight: $font-bold;
+
+    @media (max-width: 1200px) {
+      font-size: $font-middle;
+      line-height: 48px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: $font-min;
+      line-height: 24px;
+      margin-bottom: 10px;
+    }
+  }
+
+  // .footer__subtitle
+  &__subtitle {
+    font-size: 28px;
+    line-height: 25px;
+    margin-left: auto;
+
+    @media (max-width: 1200px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @media (max-width: 900px) {
+      margin-left: 0;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: $font-mobile;
+    }
+  }
+
+  // .footer__subscribe
+  &__subscribe {
+    flex: 0 1 60%;
+    display: flex;
+    justify-content: space-between;
+
+    @media (max-width: 630px) {
+      flex-direction: column;
+    }
+  }
+
+  // .footer__email
+  &__email {
+    display: flex;
+    justify-content: space-between;
+    // flex: 0 1 30%;
+
+    @media (max-width: 630px) {
+      flex-direction: column;
+    }
+  }
+
+  // .footer__button
+  &__button {
+    flex: 0 1 28%;    
+
+    // .footer__button_subscribe
+    &_subscribe {
+      min-width: 300px;
+      text-align: center;
+      color: $color-white;
+      line-height: 17px;
+      font-size: 14px;
+      background-color: $back-color;
+      border: 1px solid $back-color;
+      padding: 20px 0px;
+      cursor: pointer;
+      user-select: none;
+
+      @media (max-width: 1200px) {
+        min-width: 180px;
+        padding: 15px 0px;
+      }
+
+      @media (max-width: 900px) {
+        min-width: 250px;
+        padding: 15px 0px;
+      }
+
+      @media (max-width: 630px) {
+        min-width: 100%;
+        padding: 15px 0px;
+      }
+
+      @media (max-width: 340px) {
+        width: 70%;
+        padding: 10px 0px;
+        font-size: $font-mobile;
+      }
+
+      &:hover {
+        color: $back-color-dark;
+        font-size: 16px;
+        font-weight: $font-bold;
+
+        @media (max-width: 340px) {
+          font-size: 14px;
+        }
+      }
+
+      &:active {
+        color: orangered;
+      }
+  
+      &:visited {
+        color: darkorange;
+      }
+    }
+  }
+}
+
+.email {
+
+  // .email__field
+  &__field {
+    position: relative;
+    flex: 0 1 28%;
+
+    // .email__field_input
+    &_input {
+      display: none;
+
+      &:checked + .email__field_label:before {
+        color: $color-white;
+        background-color: $back-color;
+      }
+    }
+
+    // .email__field_label
+    &_label {
+      line-height: 17px;
+      font-size: 14px;
+      margin-left: 32px;
+      vertical-align: middle;
+      user-select: none;
+
+      // .email__field_label:before
+      &:before {
+        content: "\2714";
+        height: 18px;
+        width: 18px;
+        color: transparent;
+        display: inline-block;
+        border: 1px solid $back-color;
+        border-radius: 3px;
+        font-weight: $font-bold;
+        text-align: center;
+        line-height: 16px;
+        transition: color ease .3s;
+        background-color: $back-color;
+        position: absolute;
+        bottom: 7%;
+        left: 0px;
+
+        @media (max-width: 1200px) {
+          bottom: 0px;
+        }
+
+        @media (max-width: 340px) {
+          height: 15px;
+          width: 15px;
+          line-height: 14px;
+          bottom: 2%;
+        }
+
+        @media (max-width: 280px) {
+          height: 12px;
+          width: 12px;
+          line-height: 8px;
+          bottom: 2%;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        font-size: $font-mobile;
+      }
+
+      @media (max-width: 340px) {
+        font-size: 11px;
+        margin-left: 25px;
+      }
+
+      @media (max-width: 280px) {
+        font-size: 9px;
+        margin-left: 4px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      min-width: 50%;
+    }
+
+    @media (max-width: 630px) {
+      margin-bottom: 40px;
+    }
+  }
+
+  // .email__input
+  &__input {
+    min-width: 300px;
+    padding: 20px;
+    border: 1px solid $color-white;
+    margin-bottom: 24px;
+
+    @media (max-width: 1200px) {
+      min-width: 90%;
+      padding: 15px;
+    }
+
+    @media (max-width: 900px) {
+      min-width: 250px;
+      padding: 15px;
+    }
+
+    @media (max-width: 630px) {
+      min-width: 100%;
+      padding: 15px;
+    }
+
+    @media (max-width: 340px) {
+      width: 70%;
+      padding: 10px;
+      font-size: $font-mobile;
+    }
+
+    &:focus {
+      border: 1px solid $back-color;
+    }
+  }
+}
+
+
+
+// ================================ Кнопка наверх ================================
+
+.scrollup {
+  background: url('/img/arrow_up.svg') no-repeat center;
+  width: 59px;
+  height: 59px;
+  position: fixed;
+  right: 6.2%;
+  bottom: 52%;
+  background-color: $back-color;
+  text-align: center;
+  line-height: 58px;
+  cursor: pointer;
+
+  @media (max-width: 630px) {
+    width: 39px;
+    height: 39px;
+  }
+
+  @media (max-width: 340px) {
+    width: 29px;
+    height: 29px;
+  }
+
+  &:hover {
+    background: url('/img/arrow_up_hover.svg') no-repeat center;
+    width: 59px;
+    height: 59px;
+    position: fixed;
+    right: 6.2%;
+    bottom: 52%;
+    background-color: #3da4c4;
+    text-align: center;
+    line-height: 58px;
+    cursor: pointer;
+
+    @media (max-width: 630px) {
+      background: url('/img/arrow_up.svg') no-repeat center;
+      width: 39px;
+      height: 39px;
+      position: fixed;
+      right: 6.2%;
+      bottom: 52%;
+      background-color: #3da4c4;
+      text-align: center;
+      line-height: 58px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 340px) {
+      background: url('/img/arrow_up.svg') no-repeat center;
+      width: 29px;
+      height: 29px;
+      position: fixed;
+      right: 6.2%;
+      bottom: 52%;
+      background-color: #3da4c4;
+      text-align: center;
+      line-height: 58px;
+      cursor: pointer;
+    }
+  }
+}

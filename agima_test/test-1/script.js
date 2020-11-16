@@ -291,6 +291,38 @@ const setLocalStorage = (data) => {
 
 
 
+
+
+
+
+
+// Функция сравнения .schedule__time и текущего времени
+const compareTime = () => {
+  // получаем время в формате HH:MM в русской локации
+  let currentTime = moment().format('LT');
+  
+
+  /* 
+  сравнить текущее время со временем конкретного события в расписании: 
+  - если меньше, чем текущее время - меняем цвет шрифта текущего блока scheduleRows на красный цвет.
+  - если совпадает с текущим временем или по времени ещё не наступило - выводим в консоль сообщение 
+    "Это событие ещё актуально!"
+  */
+ const z = document.querySelectorAll('.schedule__rows');
+  console.log(z);
+}
+
+compareTime();
+
+// Функция изменения цвета конкретных элементов
+// const changeColorFont = (el1, el2) => {
+//   el1 = 
+// }
+
+
+
+
+
 // Добавляем данные формы в расписание
 scheduleList.addEventListener('submit', (e) => {
   e.preventDefault();
