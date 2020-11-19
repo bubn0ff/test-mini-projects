@@ -6,11 +6,12 @@
 
 Макет страницы: https://www.figma.com/file/UXn4IQQqHM2TdpIpNJPeFt/T-Task?node-id=0%3A1
 
+
 ## Суть задания:
 
 Сверстать страницу по макету.
 
-
+![Logo](./img/Alef__test.png)
 
 Вёрстка:
 
