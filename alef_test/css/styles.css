@@ -105,7 +105,7 @@ h2 {
 
 .header {
   color: #fff;
-  background: url("/img/header.png") no-repeat top center;
+  background: url("../img/header.png") no-repeat top center;
   background-size: cover;
   position: relative;
 }
@@ -354,7 +354,7 @@ h2 {
   height: 100%;
   top: 0;
   left: 0;
-  background: url("/img/header_background.png") no-repeat top center;
+  background: url("../img/header_background.png") no-repeat top center;
   background-size: cover;
   z-index: 1;
 }
@@ -488,7 +488,7 @@ h2 {
 }
 
 .cards__img_selected:after {
-  content: url("/img/heart.svg");
+  content: url("../img/heart.svg");
   position: absolute;
   width: 46px;
   height: 42px;
@@ -499,7 +499,7 @@ h2 {
 
 @media (max-width: 480px) {
   .cards__img_selected:after {
-    content: url("/img/heart-min.svg");
+    content: url("../img/heart-min.svg");
     width: 36px;
     height: 32px;
     top: 20px;
@@ -509,14 +509,14 @@ h2 {
 
 @media (max-width: 340px) {
   .cards__img_selected:after {
-    content: url("/img/heart-micro.svg");
+    content: url("../img/heart-micro.svg");
     width: 26px;
     height: 22px;
   }
 }
 
 .cards__img_unselected:after {
-  content: url("/img/heart-white.svg");
+  content: url("../img/heart-white.svg");
   position: absolute;
   width: 46px;
   height: 42px;
@@ -527,7 +527,7 @@ h2 {
 
 @media (max-width: 480px) {
   .cards__img_unselected:after {
-    content: url("/img/heart-white-min.svg");
+    content: url("../img/heart-white-min.svg");
     width: 36px;
     height: 32px;
     top: 20px;
@@ -537,7 +537,7 @@ h2 {
 
 @media (max-width: 340px) {
   .cards__img_unselected:after {
-    content: url("/img/heart-white-micro.svg");
+    content: url("../img/heart-white-micro.svg");
     width: 26px;
     height: 22px;
   }
@@ -666,20 +666,20 @@ h2 {
 }
 
 .sort__price:after {
-  content: url("/img/arrow_down.svg");
+  content: url("../img/arrow_down.svg");
   margin-left: 14px;
   cursor: pointer;
 }
 
 @media (max-width: 630px) {
   .sort__price:after {
-    content: url("/img/arrow_down_min.svg");
+    content: url("../img/arrow_down_min.svg");
   }
 }
 
 @media (max-width: 480px) {
   .sort__price:after {
-    content: url("/img/arrow_down_micro.svg");
+    content: url("../img/arrow_down_micro.svg");
     margin-left: 3px;
   }
 }
@@ -707,20 +707,20 @@ h2 {
 }
 
 .sort__age:after {
-  content: url("/img/arrow_down.svg");
+  content: url("../img/arrow_down.svg");
   margin-left: 14px;
   cursor: pointer;
 }
 
 @media (max-width: 630px) {
   .sort__age:after {
-    content: url("/img/arrow_down_min.svg");
+    content: url("../img/arrow_down_min.svg");
   }
 }
 
 @media (max-width: 480px) {
   .sort__age:after {
-    content: url("/img/arrow_down_micro.svg");
+    content: url("../img/arrow_down_micro.svg");
     margin-left: 3px;
   }
 }
@@ -1170,7 +1170,7 @@ h2 {
 }
 
 .scrollup {
-  background: url("/img/arrow_up.svg") no-repeat center;
+  background: url("../img/arrow_up.svg") no-repeat center;
   width: 59px;
   height: 59px;
   position: fixed;
@@ -1197,7 +1197,7 @@ h2 {
 }
 
 .scrollup:hover {
-  background: url("/img/arrow_up_hover.svg") no-repeat center;
+  background: url("../img/arrow_up_hover.svg") no-repeat center;
   width: 59px;
   height: 59px;
   position: fixed;
@@ -1211,7 +1211,7 @@ h2 {
 
 @media (max-width: 630px) {
   .scrollup:hover {
-    background: url("/img/arrow_up.svg") no-repeat center;
+    background: url("../img/arrow_up.svg") no-repeat center;
     width: 39px;
     height: 39px;
     position: fixed;
@@ -1226,7 +1226,7 @@ h2 {
 
 @media (max-width: 340px) {
   .scrollup:hover {
-    background: url("/img/arrow_up.svg") no-repeat center;
+    background: url("../img/arrow_up.svg") no-repeat center;
     width: 29px;
     height: 29px;
     position: fixed;
